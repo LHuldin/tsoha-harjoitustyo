@@ -1,0 +1,2 @@
+# Harjoitustyön aihe
+Harjoitustyössä tarkoitukseni
