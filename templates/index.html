@@ -1,10 +1,17 @@
 <title>Etusivu</title>
 <h1>Etusivu</h1>
 <b>Tervetuloa</b> 
-<i>sovellukseen</i>!
-
-
-
-<u>testailua</u>
+<p>
 
 <img src="/static/testikuva07042024.png">
+<p>
+Olet sivuston {{ counter }}. käyttäjä 
+<p>
+
+
+{% if session.user_id %}
+Olet kirjautunut sisään.
+<a href="/logout">Kirjaudu ulos</a>
+{% else %}
+<a href="/login">Kirjaudu sisään</a>
+{% endif %}
