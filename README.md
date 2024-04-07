@@ -9,3 +9,7 @@ Harjoitustyössä tarkoitukseni on tehdä harraste/keräilykokoelman ylläpitoso
 - Mahdollisuus merkitä tuote myyntiin/vaidettavaksi, jolloin tuote näkyy myös omassa osiossaan jossa on käyttäjien myytävät/vaidettavat tuotteet.
 - Mahdollisesti rajaus esimerkiksi peli, elokuva, sarjakuva kokoelmiin.
 - Mahdollisuus kommentoida toisten tuotteita. 
+
+# Tilanne 7.4
+- Sain luotua raakileen jossa vain kirjautuminen ja kävijä laskuri toiminnassa
+- Ohjelma löytyy osoitteesta 
