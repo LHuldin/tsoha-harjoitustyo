@@ -21,7 +21,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username, password):
-            return redirect("/")
+            return redirect("/mypage")
         else:
             return render_template("error.html", message="Kirjautuminen ei onnistunut")
 
@@ -40,6 +40,26 @@ def register():
         if len(password) < 4:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
         if users.register(username, password):
-            return redirect("/")
+            return redirect("/mypage")
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
+        
+@app.route("/mypage")
+def mypage():
+
+    return render_template("mypage.html")
+
+@app.route("/additem")
+def additem():
+    
+    return render_template("additem.html")
+
+@app.route("/items")
+def items():
+    
+    return render_template("items.html")
+
+@app.route("/dropitem")
+def dropitem():
+    
+    return render_template("dropitem.html")
