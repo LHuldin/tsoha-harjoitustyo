@@ -2,7 +2,7 @@ from app import app
 from flask import render_template, redirect, request
 from db import db
 from sqlalchemy.sql import text
-import users
+import users, collection
 
 
 @app.route("/")
@@ -49,15 +49,27 @@ def mypage():
 
     return render_template("mypage.html")
 
-@app.route("/additem")
+@app.route("/additem",  methods=["GET", "POST"])
 def additem():
-    
-    return render_template("additem.html")
+    if request.method == "GET":
+        return render_template("additem.html")
+    if request.method == "POST":
+        type = request.form["type"]
+        model = request.form["model"]
+        condition = request.form["condition"]
+        if len(type) < 1 or len(model) < 1 or len(condition) < 1:
+            return render_template("error.html", message="Lisäys ei onnistunut")
+        if collection.add_item(type, model, condition):
+            return redirect("/mypage")
+        return render_template("error.html", message="Lisäys ei onnistunut")
+
+
+    #return render_template("additem.html")
 
 @app.route("/items")
 def items():
-    
-    return render_template("items.html")
+    items_list = collection.items()
+    return render_template("items.html", count=len(items_list), items_list = items_list)
 
 @app.route("/dropitem")
 def dropitem():
