@@ -13,3 +13,7 @@ Harjoitustyössä tarkoitukseni on tehdä harraste/keräilykokoelman ylläpitoso
 # Tilanne 7.4
 - Sain luotua raakileen jossa vain kirjautuminen ja kävijä laskuri toiminnassa
 - Ohjelma löytyy osoitteesta (https://tsoha-harjoitustyo.fly.dev)
+
+# Tilanne 21.4
+- Ohjelma edelleenkin raakile jossa vain kirjautuminen, kävijä laskuri, tuotteiden lisäys ja tuotelistan karkea tulostus onnistuu
+- Ohjelma löytyy osoitteesta (https://tsoha-harjoitustyo.fly.dev)
