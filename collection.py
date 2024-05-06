@@ -16,3 +16,21 @@ def items():
     result = db.session.execute(text("SELECT type, model FROM library"))
     items = result.fetchall()
     return items
+
+def add_software(name, mediatype, model, condition, value):
+    try:
+        sql = text("INSERT INTO software (name, mediatype, model, condition, value) VALUES (:name,:mediatype,:model,:condition,:value)")
+        db.session.execute(sql, {"name":name, "type":mediatype, "model":model, "condition":condition, "value":value})
+        db.session.commit()
+    except:
+        return False
+    return True
+
+def add_hardware(type, model, condition, value):
+    try:
+        sql = text("INSERT INTO hardware (type, model, condition, value) VALUES (:type,:model,:condition,:value)")
+        db.session.execute(sql, {"type":type, "model":model, "condition":condition, "value":value})
+        db.session.commit()
+    except:
+        return False
+    return True
