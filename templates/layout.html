@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
+
+<title>Retropeli ja laite tietokanta</title>
+<a href="/">Etusivulle</a>
+{% if session.user_id %}
+Olet kirjautunut sisään.
+<a href="/mypage">Omalle sivulle</a>
+<a href="/publicpage">Yhteiselle sivulle</a>
+<a href="/logout">Kirjaudu ulos</a>
+{% else %}
+<a href="/login">Kirjaudu sisään</a>
+{% endif %}
+
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+<hr>

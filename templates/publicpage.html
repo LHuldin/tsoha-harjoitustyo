@@ -1,9 +1,14 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css">
-<title>Meidän sivu</title>
-<h1>Meidän sivu</h1>
+{% extends "layout.html" %}
+{% block title %}Meidän Sivu{% endblock %}
+{% block content %}
+<h2>Meidän Sivu</h2>
 <b>Täällä muiden julkiseksi asettamat tuotteet</b>
+<p>
+<a href="/mypage">Takaisin omalle sivulle</a>
+<p>
 
-<!-- Laitteiden lista taulukossa -->
+
+
 <h2>Laitteet</h2>
 <table>
     <tr>
@@ -22,7 +27,7 @@
     {% endfor %}
 </table>
 
-<!-- Pelien ja ohjelmistojen lista taulukossa -->
+
 <h2>Pelit ja ohjelmistot</h2>
 <table>
     <tr>
@@ -42,3 +47,23 @@
     </tr>
     {% endfor %}
 </table>
+
+
+<h2>Kommentit</h2>
+<hr>
+{% for comment in comment_list %}
+<b>Kommentti:</b> {{ comment[0] }}
+<p>
+<b>Lähettäjä:</b> {{ comment[1] }}
+<p>
+<b>Lisäysaika:</b> {{ comment[2].strftime("%Y-%m-%d %H:%M:%S") }}
+<hr>
+{% endfor %}
+{% if session.user_id %}
+
+<a href="/addcomment">Lähetä viesti</a> 
+{% else %}
+<a href="/login">Kirjaudu sisään</a>
+{% endif %}
+
+{% endblock %}

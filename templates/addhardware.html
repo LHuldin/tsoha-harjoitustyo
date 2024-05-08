@@ -1,6 +1,8 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css">
-<title>Lisää tuote</title>
-<h1>Lisää tuote</h1>
+{% extends "layout.html" %}
+{% block title %}Lisää laite{% endblock %}
+{% block content %}
+<h2>Lisää laite</h2>
+
 <b>Täällä voin lisätä laitteita kokoelmaani</b> 
 
 
@@ -13,11 +15,14 @@
         <input type="text" name="model"></p>
         <p>Kunto:<br>
         <input type="text" name="condition"></p>
-        <p>Arvo:<br>
+        <p>Arvo: anna arvo kokonaislukuna<br>
         <input type="text" name="value"></p>
-        <p>Julkinen:<br>
+        <p>Julkinen: määrittelee tuotteen näkymisen yhteisellä sivulla<br>
         <input type="radio" name="public" value=false checked> yksityinen
         <input type="radio" name="public" value=true> julkinen
         <input type="submit" value="Lisää Laite">
+        <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
         </form>
 </p> 
+
+{% endblock %}

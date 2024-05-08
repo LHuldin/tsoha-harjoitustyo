@@ -1,5 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css">
-<title>Etusivu</title>
+{% extends "layout.html" %}
+{% block title %}Etusivu{% endblock %}
+{% block content %}
 <h1>Etusivu</h1>
 <b>Tervetuloa</b> 
 <p>
@@ -18,3 +19,5 @@ Olet kirjautunut sisään.
 {% else %}
 <a href="/login">Kirjaudu sisään</a>
 {% endif %}
+
+{% endblock %}

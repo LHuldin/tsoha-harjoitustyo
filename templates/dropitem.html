@@ -1,6 +1,7 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css">
-<title>Poista tuote</title>
-<h1>Poista tuote</h1>
+{% extends "layout.html" %}
+{% block title %}Poista tuote{% endblock %}
+{% block content %}
+<h2>Poista tuote</h2>
 <b>Täällä voin poistaa tuotteen kokoelmastani</b> 
 
 <form action="/dropitem" method="POST">
@@ -10,6 +11,7 @@
         <p>ID:<br>
             <input type="text" name="id"></p>
     <input type="submit" value="Poista tuote">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 
 
@@ -51,6 +53,8 @@
     </tr>
     {% endfor %}
 </table>
+
+{% endblock %}
 
 
 

@@ -1,6 +1,7 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css">
-<title>Oma sivuni</title>
-<h1>Oma sivu</h1>
+{% extends "layout.html" %}
+{% block title %}Oma Sivu{% endblock %}
+{% block content %}
+<h1>Oma Sivu</h1>
 <b>Täällä hallitsen kokoelmaania</b> 
 Kokoelman ohjelmistojen arvo: {{ swsum }}
 Kokoelman laitteiden arvo: {{ hwsum }}
@@ -9,11 +10,9 @@ Kokoelman laitteiden arvo: {{ hwsum }}
 <p>
 <a href="/addsoftware">Valitse tämä kun haluat lisätä softaa</a>
 <p>
-<a href="/publicpage">Täältä näet kaikkien nähtävillä olevat tuotteet</a>
+<a href="/publicpage">Yhteinen sivu jolta näet kaikkien nähtävillä olevat tuotteet</a>
 <p>
 <a href="/dropitem">Poista tuote</a>
-<p>
-<a href="/logout">Kirjaudu ulos</a>
 </p>
 
 <h2>Laitteet</h2>
@@ -54,3 +53,5 @@ Kokoelman laitteiden arvo: {{ hwsum }}
     </tr>
     {% endfor %}
 </table>
+
+{% endblock %}
