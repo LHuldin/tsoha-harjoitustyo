@@ -1,8 +1,8 @@
 from app import app
-from flask import render_template, redirect, request
+from flask import render_template, redirect, request, session, abort
 from db import db
 from sqlalchemy.sql import text
-import users, collection
+import users, comments, collection
 
 
 @app.route("/")
@@ -25,7 +25,7 @@ def login():
         if users.login(username, password):
             return redirect("/mypage")
         else:
-            return render_template("error.html", message="Kirjautuminen ei onnistunut")
+            return render_template("error.html", message="Kirjautuminen ei onnistunut, käyttäjänimi tai salasana väärin!")
 
 @app.route("/logout")
 def logout():
@@ -40,7 +40,7 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
         if len(password) < 4:
-            return render_template("error.html", message="Rekisteröinti ei onnistunut")
+            return render_template("error.html", message="Rekisteröinti ei onnistunut, liian lyhyt käyttäjänimi tai salasana!")
         if users.register(username, password):
             return redirect("/mypage")
         else:
@@ -59,22 +59,6 @@ def mypage():
     sum = swvalue + hwvalue
     return render_template("mypage.html", swsum=swvalue, hwsum=hwvalue, sum=sum, hw_list=hw_list, sw_list=sw_list)
 
-#@app.route("/additem",  methods=["GET", "POST"])
-#def additem():
-#    if request.method == "GET":
-#        return render_template("additem.html")
-#    if request.method == "POST":
-#        type = request.form["type"]
-#        model = request.form["model"]
-#        condition = request.form["condition"]
-#        if len(type) < 1 or len(model) < 1 or len(condition) < 1:
-#            return render_template("error.html", message="Lisäys ei onnistunut")
-#        if collection.add_item(type, model, condition):
-#            return redirect("/mypage")
-#        return render_template("error.html", message="Lisäys ei onnistunut")
-
-
-    #return render_template("additem.html")
 
 @app.route("/addhardware",  methods=["GET", "POST"])
 def addhardware():
@@ -87,8 +71,10 @@ def addhardware():
         value = request.form["value"]
         public = request.form["public"]
         visible = "true"
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         if len(type) < 1 or len(model) < 1 or len(condition) < 1:
-            return render_template("error.html", message="Lisäys ei onnistunuttest")
+            return render_template("error.html", message="Lisäys ei onnistunut, täytä kaikki lomakkeen kentät!")
         if collection.add_hardware(type, model, condition, value, public, visible):
             return redirect("/mypage")
         return render_template("error.html", message="Lisäys ei onnistunuttoast")
@@ -105,8 +91,10 @@ def addsoftware():
         value = request.form["value"]
         public = request.form["public"]
         visible = "true"
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
         if len(type) < 1 or len(model) < 1 or len(condition) < 1:
-            return render_template("error.html", message="Lisäys ei onnistunut")
+            return render_template("error.html", message="Lisäys ei onnistunut, täytä kaikki lomakkeen kentät!")
         if collection.add_software(name,  type, model, condition, value, public, visible):
             return redirect("/mypage")
         return render_template("error.html", message="Lisäys ei onnistunut")
@@ -122,7 +110,9 @@ def items():
 def publicpage():
     hw_list = collection.public_hwitems()
     sw_list = collection.public_switems()
-    return render_template("publicpage.html", hw_list = hw_list, sw_list = sw_list)
+    comment_list = comments.comments()
+    return render_template("publicpage.html", hw_list = hw_list, sw_list = sw_list, comment_list = comment_list)
+
 
 
 @app.route("/dropitem",  methods=["GET", "POST"])
@@ -137,4 +127,18 @@ def dropitem():
         if collection.drop_item(itemtype, id):
             return redirect("/mypage")
         return render_template("error.html", message="Poisto ei onnistunut")
+    
+@app.route("/addcomment")
+def addcomment():
+    return render_template("addcomment.html")
+
+@app.route("/addnewcomment", methods=["POST"])
+def send():
+    comment = request.form["comment"]
+    if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
+    if comments.add_comment(comment):
+        return redirect("/publicpage")
+    else:
+        return render_template("error.html", message="Kommentin lisäys ei onnistunut")
 
