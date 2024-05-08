@@ -4,18 +4,6 @@ from sqlalchemy.sql import text
 from flask_sqlalchemy import SQLAlchemy
 import users
 
-#def add_item(type, model, condition):
-#    user_id = users.user_id()
-#    if user_id == 0:
-#        return False
-#    
-#    try:
-#        sql = text("INSERT INTO library (type, model, condition) VALUES (:type,:model,:condition)")
-#        db.session.execute(sql, {"type":type, "model":model, "condition":condition})
-#        db.session.commit()
-#    except:
-#        return False
-#    return True
 
 def items():
     result = db.session.execute(text("SELECT * FROM software"))

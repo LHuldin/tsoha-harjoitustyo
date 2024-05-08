@@ -75,6 +75,8 @@ def addhardware():
             abort(403)
         if len(type) < 1 or len(model) < 1 or len(condition) < 1:
             return render_template("error.html", message="Lisäys ei onnistunut, täytä kaikki lomakkeen kentät!")
+        if len(type) > 20 or len(model) > 20 or len(condition) > 20:
+            return render_template("error.html", message="Lisäys ei onnistunut, liian monta merkkiä kentässä!")
         if collection.add_hardware(type, model, condition, value, public, visible):
             return redirect("/mypage")
         return render_template("error.html", message="Lisäys ei onnistunuttoast")
@@ -93,8 +95,10 @@ def addsoftware():
         visible = "true"
         if session["csrf_token"] != request.form["csrf_token"]:
             abort(403)
-        if len(type) < 1 or len(model) < 1 or len(condition) < 1:
+        if len(name) < 1 or len(type) < 1 or len(model) < 1 or len(condition) < 1:
             return render_template("error.html", message="Lisäys ei onnistunut, täytä kaikki lomakkeen kentät!")
+        if len(name) > 20 or len(type) > 20 or len(model) > 20 or len(condition) >20:
+            return render_template("error.html", message="Lisäys ei onnistunut, liian monta merkkiä kentässä!")
         if collection.add_software(name,  type, model, condition, value, public, visible):
             return redirect("/mypage")
         return render_template("error.html", message="Lisäys ei onnistunut")
@@ -141,4 +145,3 @@ def send():
         return redirect("/publicpage")
     else:
         return render_template("error.html", message="Kommentin lisäys ei onnistunut")
-
