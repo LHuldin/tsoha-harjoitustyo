@@ -1,0 +1,17 @@
+<title>Meidän sivu</title>
+<h1>Meidän sivu</h1>
+<b>Täällä muiden julkiseksi asettamat tuotteet</b>
+
+<hr>
+{% for item in hw_list %}
+{{ item.type, item.model, item.condition, item.value}}
+
+<hr>
+{% endfor %}
+
+<hr>
+
+{% for item in sw_list %}
+{{ item.name, item.mediatype, item.model, item.condition, item.value}}
+<hr>
+{% endfor %}

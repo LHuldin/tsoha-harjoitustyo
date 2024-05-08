@@ -1,21 +1,22 @@
 <title>Lisää tuote</title>
 <h1>Lisää tuote</h1>
-<b>Täällä voin lisätä tuotteita kokoelmaani</b> 
+<b>Täällä voin lisätä laitteita kokoelmaani</b> 
 
 
 <p>   
     <form action="/addhardware" method="POST">
         <p>Tyyppi:<br>
-        <select name="type">
-        <option value="computer" selected> tietokone
-        <option value="console"> pelikonsoli
-        </select>   
+        <input type="radio" name="type" value="tietokone" checked> tietokone
+        <input type="radio" name="type" value="pelikonsoli"> pelikonsoli
         <p>Malli:<br>
         <input type="text" name="model"></p>
         <p>Kunto:<br>
         <input type="text" name="condition"></p>
         <p>Arvo:<br>
         <input type="text" name="value"></p>
+        <p>Julkinen:<br>
+        <input type="radio" name="public" value=false checked> yksityinen
+        <input type="radio" name="public" value=true> julkinen
         <input type="submit" value="Lisää Laite">
         </form>
 </p> 

@@ -1,10 +1,27 @@
 <title>Oma sivuni</title>
 <h1>Oma sivu</h1>
 <b>Täällä hallitsen kokoelmaania</b> 
+Kokoelman ohjelmistojen arvo: {{ swsum }}
+Kokoelman laitteiden arvo: {{ hwsum }}
 <p>
-<a href="/additem">Lisää tuote</a>
+<a href="/addhardware">Valitse tämä kun haluat lisätä hardista</a>
+<a href="/addsoftware">Valitse tämä kun haluat lisätä softaa</a>
+<a href="/publicpage">Täältä näet kaikkien nähtävillä olevat tuotteet</a>
 <a href="/items">Näytä tuotteet</a>
 <a href="/dropitem">Poista tuote</a>
 <p>
 <a href="/logout">Kirjaudu ulos</a>
 </p>
+
+<hr>
+
+{% for item in hw_list %}
+{{ item.type, item.model, item.condition, item.value }}
+<hr>
+{% endfor %}
+
+<hr>
+{% for item in sw_list %}
+{{ item.name, item.mediatype, item.model, item.condition, item.value}}
+<hr>
+{% endfor %}

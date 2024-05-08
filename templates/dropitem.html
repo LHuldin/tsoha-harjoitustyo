@@ -1,3 +1,28 @@
 <title>Poista tuote</title>
 <h1>Poista tuote</h1>
 <b>Täällä voin poistaa tuotteen kokoelmastani</b> 
+
+<form action="/dropitem" method="POST">
+    <p>Laite vai Ohjelmisto:<br>
+        <input type="radio" name="itemtype" value="hw" checked> Laite
+        <input type="radio" name="itemtype" value="sw"> Peli/Ohjelmisto
+        <p>ID:<br>
+            <input type="text" name="id"></p>
+    <input type="submit" value="Poista tuote">
+</form>
+<h2>Laitteet</h2>
+<hr>
+
+{% for item in hw_list %}
+{{ item.id, item.type, item.model }}
+<hr>
+{% endfor %}
+
+<h2>Pelit ja ohjelemistot</h2>
+<hr>
+{% for item in sw_list %}
+{{ item.id, item.name, item.mediatype, item.model }}
+<hr>
+{% endfor %}
+
+

@@ -1,6 +1,6 @@
 <title>Lisää tuote</title>
 <h1>Lisää tuote</h1>
-<b>Täällä voin lisätä tuotteita kokoelmaani</b> 
+<b>Täällä voin lisätä pelejä ja ohjelmistoja kokoelmaani</b> 
 
 <p> 
     <form action="/addsoftware" method="POST">
@@ -14,6 +14,9 @@
         <input type="text" name="condition"></p>
         <p>Arvo:<br>
         <input type="text" name="value"></p>
+        <p>Julkinen:<br>
+        <input type="radio" name="public" value=false checked> yksityinen
+        <input type="radio" name="public" value=true> julkinen
         <input type="submit" value="Lisää peli/ohjelmisto">
         </form>
         

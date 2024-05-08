@@ -11,6 +11,7 @@ Olet sivuston {{ counter }}. käyttäjä
 
 {% if session.user_id %}
 Olet kirjautunut sisään.
+<a href="/mypage">Omalle sivulle</a>
 <a href="/logout">Kirjaudu ulos</a>
 {% else %}
 <a href="/login">Kirjaudu sisään</a>
