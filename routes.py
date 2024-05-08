@@ -11,7 +11,9 @@ def index():
     db.session.commit()
     result = db.session.execute(text("SELECT COUNT(*) FROM visitors"))
     counter = result.fetchone()[0]
-    return render_template("index.html", counter=counter)
+    result2 = db.session.execute(text("SELECT COUNT(*) FROM users"))
+    rusers = result2.fetchone()[0]
+    return render_template("index.html", counter=counter, rusers=rusers)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -102,9 +104,10 @@ def addsoftware():
         condition = request.form["condition"]
         value = request.form["value"]
         public = request.form["public"]
+        visible = "true"
         if len(type) < 1 or len(model) < 1 or len(condition) < 1:
             return render_template("error.html", message="Lisäys ei onnistunut")
-        if collection.add_software(name,  type, model, condition, value, public):
+        if collection.add_software(name,  type, model, condition, value, public, visible):
             return redirect("/mypage")
         return render_template("error.html", message="Lisäys ei onnistunut")
 
