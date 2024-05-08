@@ -12,20 +12,21 @@
 - Kloonaa tämä repositorio koneellesi.
 - Siirry repositorion juurihakemistoon ja luo sinne .env tiedosto.
 - Lisää .env tiedostoon seuraavat rivit:
-
-- DATABASE_URL=<tietokannan-paikallinen-osoite>
-- SECRET_KEY=<salainen-avain>
-
+    ```
+    DATABASE_URL=<tietokannan-paikallinen-osoite>
+    SECRET_KEY=<salainen-avain>
+    ```
 - Aktivoi virtuaaliympäristö ja asenna tarvittavat riipuvuudet seuraavilla komennoilla:
-
-- $ python3 -m venv venv
-- $ source venv/bin/activate
-- $ pip install -r ./requirements.txt
-
+    ```
+    $ python3 -m venv venv
+    $ source venv/bin/activate
+    $ pip install -r ./requirements.txt
+    ```
 - Tietokanta määritellään postgres tietokantaan seuraavalla komennolla:
-
-- $ psql < schema.sql
-
+    ```
+    $ psql < schema.sql
+    ```
 - Nyt olet valmis käynnistämään ohjelman komennolla:
-
-- $ flask run
+    ```
+    $ flask run
+    ```
