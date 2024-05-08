@@ -1,19 +1,11 @@
-# Harjoitustyön aihe
-Harjoitustyössä tarkoitukseni on tehdä harraste/keräilykokoelman ylläpitosovellus jossa käyttäjä listaa omistamansa aiheeseen liittyvät tuotteet.
-- Sovelluksessa on ylläpitäjä sekä peruskäyttäjiä. 
-- Käyttäjät voivat tarkastella toistensa kokoelmia mutta voivat samalla määritellä missä määrin kokoelmansa ovat muille käyttäjille näkyvillä.
-- Näkyvyys toteutetaan 3-4 eri tasoa sisätävällä asteikolla. Oletuksena alin 1 taso mutta mahdollisuus antaa tietyille käyttäjille korkeampia tasoja.  
-- Käyttäjällä on myös mahdollisuus estää kokonaan toisia yksittäisiä käyttäjiä.
-- Mahdollisuus ilmoittaa ylläpitäjälle toisista käyttäjistä. Ylläpitäjä voi estää kokonaan tietyn käyttäjän näkemästä muiden kokoelmia.  
-- Tuotteilla voi olla eri sijainteja esimerkiksi koti, varasto kotona, varasto jossain muualla.
-- Mahdollisuus merkitä tuote myyntiin/vaidettavaksi, jolloin tuote näkyy myös omassa osiossaan jossa on käyttäjien myytävät/vaidettavat tuotteet.
-- Mahdollisesti rajaus esimerkiksi peli, elokuva, sarjakuva kokoelmiin.
-- Mahdollisuus kommentoida toisten tuotteita. 
+## Retro peli ja laite kirjasto
+- Käyttäjä voi rekisteröityä ja kirjautua sovellukseen
+- Kirjauduttuaan käyttäjä voi lisätä kirjastoon laitteita (tietokoneet ja pelikonsolit) tai sovelluksia ja pelejä.
+- käyttäjä voi määritelllä lisäämänsä tuotteet joko yksityisiksi tai julkisiksi.
+- käyttäjä voi myös poistaa lisäämiään tuotteita.
+- Julkiseksi määritellyt tuotteet näkyvät oman sivun lisäksi kaikkien käyttäjien yhteisellä sivulla
+- Yhteisellä sivulla käyttäjillä on mahdollista jättää myös kommentteja
 
-# Tilanne 7.4
-- Sain luotua raakileen jossa vain kirjautuminen ja kävijä laskuri toiminnassa
-- Ohjelma löytyy osoitteesta (https://tsoha-harjoitustyo.fly.dev)
-
-# Tilanne 21.4
-- Ohjelma edelleenkin raakile jossa vain kirjautuminen, kävijä laskuri, tuotteiden lisäys ja tuotelistan karkea tulostus onnistuu
-- Ohjelma löytyy osoitteesta (https://tsoha-harjoitustyo.fly.dev)
+# Ohjelman testaus
+- Ohjelman VANHA VERSIO löytyy osoitteesta (https://tsoha-harjoitustyo.fly.dev)
+- Koska ohjelman päivittäminen fly.io palveluun ei tällä hetkellä onnistu voi sitä testata seuraavilla ohjeilla: 
