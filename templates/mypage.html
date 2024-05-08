@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
 <title>Oma sivuni</title>
 <h1>Oma sivu</h1>
 <b>Täällä hallitsen kokoelmaania</b> 
@@ -5,23 +6,51 @@ Kokoelman ohjelmistojen arvo: {{ swsum }}
 Kokoelman laitteiden arvo: {{ hwsum }}
 <p>
 <a href="/addhardware">Valitse tämä kun haluat lisätä hardista</a>
+<p>
 <a href="/addsoftware">Valitse tämä kun haluat lisätä softaa</a>
+<p>
 <a href="/publicpage">Täältä näet kaikkien nähtävillä olevat tuotteet</a>
-<a href="/items">Näytä tuotteet</a>
+<p>
 <a href="/dropitem">Poista tuote</a>
 <p>
 <a href="/logout">Kirjaudu ulos</a>
 </p>
 
-<hr>
+<h2>Laitteet</h2>
+<table>
+    <tr>
+        <th>Tyyppi</th>
+        <th>Malli</th>
+        <th>Kunto</th>
+        <th>Arvo</th>
+    </tr>
+    {% for item in hw_list %}
+    <tr>
+        <td>{{ item.type }}</td>
+        <td>{{ item.model }}</td>
+        <td>{{ item.condition }}</td>
+        <td>{{ item.value }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
-{% for item in hw_list %}
-{{ item.type, item.model, item.condition, item.value }}
-<hr>
-{% endfor %}
 
-<hr>
-{% for item in sw_list %}
-{{ item.name, item.mediatype, item.model, item.condition, item.value}}
-<hr>
-{% endfor %}
+<h2>Pelit ja ohjelmistot</h2>
+<table>
+    <tr>
+        <th>Nimi</th>
+        <th>Mediatyyppi</th>
+        <th>Malli</th>
+        <th>Kunto</th>
+        <th>Arvo</th>
+    </tr>
+    {% for item in sw_list %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.mediatype }}</td>
+        <td>{{ item.model }}</td>
+        <td>{{ item.condition }}</td>
+        <td>{{ item.value }}</td>
+    </tr>
+    {% endfor %}
+</table>

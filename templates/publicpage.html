@@ -1,17 +1,44 @@
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
 <title>Meidän sivu</title>
 <h1>Meidän sivu</h1>
 <b>Täällä muiden julkiseksi asettamat tuotteet</b>
 
-<hr>
-{% for item in hw_list %}
-{{ item.type, item.model, item.condition, item.value}}
+<!-- Laitteiden lista taulukossa -->
+<h2>Laitteet</h2>
+<table>
+    <tr>
+        <th>Tyyppi</th>
+        <th>Malli</th>
+        <th>Kunto</th>
+        <th>Arvo</th>
+    </tr>
+    {% for item in hw_list %}
+    <tr>
+        <td>{{ item.type }}</td>
+        <td>{{ item.model }}</td>
+        <td>{{ item.condition }}</td>
+        <td>{{ item.value }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
-<hr>
-{% endfor %}
-
-<hr>
-
-{% for item in sw_list %}
-{{ item.name, item.mediatype, item.model, item.condition, item.value}}
-<hr>
-{% endfor %}
+<!-- Pelien ja ohjelmistojen lista taulukossa -->
+<h2>Pelit ja ohjelmistot</h2>
+<table>
+    <tr>
+        <th>Nimi</th>
+        <th>Mediatyyppi</th>
+        <th>Malli</th>
+        <th>Kunto</th>
+        <th>Arvo</th>
+    </tr>
+    {% for item in sw_list %}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.mediatype }}</td>
+        <td>{{ item.model }}</td>
+        <td>{{ item.condition }}</td>
+        <td>{{ item.value }}</td>
+    </tr>
+    {% endfor %}
+</table>

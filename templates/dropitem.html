@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
 <title>Poista tuote</title>
 <h1>Poista tuote</h1>
 <b>Täällä voin poistaa tuotteen kokoelmastani</b> 
@@ -10,19 +11,49 @@
             <input type="text" name="id"></p>
     <input type="submit" value="Poista tuote">
 </form>
+
+
 <h2>Laitteet</h2>
-<hr>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tyyppi</th>
+        <th>Malli</th>
+        
+    </tr>
+    {% for item in hw_list %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.model }}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
 
-{% for item in hw_list %}
-{{ item.id, item.type, item.model }}
-<hr>
-{% endfor %}
+<!-- Pelien ja ohjelmistojen lista taulukossa -->
+<h2>Pelit ja ohjelmistot</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nimi</th>
+        <th>Mediatyyppi</th>
+        <th>Malli</th>
+        
+    </tr>
+    {% for item in sw_list %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.mediatype }}</td>
+        <td>{{ item.model }}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
 
-<h2>Pelit ja ohjelemistot</h2>
-<hr>
-{% for item in sw_list %}
-{{ item.id, item.name, item.mediatype, item.model }}
-<hr>
-{% endfor %}
+
+
+
 
 
