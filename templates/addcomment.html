@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Lisää kommentti{% endblock %}
+{% block content %}
+<h2>Lisää kommentti</h2>
+
+<form action="/addnewcomment" method="post">
+Viesti: <br>
+<textarea name="comment" rows="3" cols="40"></textarea>
+<br>
+<input type="submit" value="Lähetä">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+</form>
+
+{% endblock %}

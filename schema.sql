@@ -7,12 +7,6 @@ CREATE TABLE visitors (
     id SERIAL PRIMARY KEY, 
     time TIMESTAMP
 );
-CREATE TABLE library (
-    id SERIAL PRIMARY KEY,
-    type TEXT,
-    model TEXT,
-    condition TEXT
-);
 CREATE TABLE hardware (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
@@ -38,6 +32,5 @@ CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     comment TEXT,
     user_id INTEGER REFERENCES users,
-    sent_at TIMESTAMP
-    
+    t_stamp TIMESTAMP
 );
